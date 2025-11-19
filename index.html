@@ -1,0 +1,1706 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles and Variables */
+:root {
+    --primary-color: #4e6bff;
+    --secondary-color: #6c757d;
+    --dark-color: #343a40;
+    --light-color: #f8f9fa;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --white: #ffffff;
+    --black: #000000;
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto; /* Ensure images scale proportionally */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.8rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.btn-small {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* Header Styles */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.navbar-scrolled {
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    transition: var(--transition);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh; /* Use min-height for better content adaptability */
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(78, 107, 255, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
+    padding-top: 80px;
+    padding-bottom: 40px; /* Add some bottom padding */
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px; /* Ensure text doesn't get too narrow */
+}
+
+.hero-text h1 {
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+}
+
+.hero-text h1 span {
+    color: var(--primary-color);
+}
+
+.hero-text h2 {
+    font-weight: 600;
+    color: var(--secondary-color);
+    margin-bottom: 1.5rem;
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+}
+
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 250px; /* Ensure image placeholder doesn't get too small */
+}
+
+.image-placeholder {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(78, 107, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* About Section */
+.about {
+    padding: 6rem 0;
+    background-color: var(--light-color);
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    margin-top: 3rem;
+    flex-wrap: wrap; /* Allow content to wrap */
+}
+
+.about-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 250px; /* Ensure image placeholder doesn't get too small */
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px; /* Ensure text doesn't get too narrow */
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+}
+
+/* Skills Section */
+.skills {
+    padding: 6rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.skill-item {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align:center;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.skill-item:hover {
+    transform: translateY(-10px);
+}
+
+.skill-item i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Projects Section */
+.projects {
+    padding: 6rem 0;
+    background-color: var(--light-color);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Adjusted minmax for smaller screens */
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.project-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-image {
+    height: 200px; /* Fixed height for project images */
+    background-color: rgba(78, 107, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Ensure image doesn't overflow */
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the area without distortion */
+}
+
+.project-image i {
+    font-size: 4rem;
+    color: var(--primary-color);
+}
+
+.project-info {
+    margin-top: 4px;
+    padding: 1.7rem;
+}
+
+.project-tech {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.project-tech span {
+    background-color: var(--light-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.demolink-button,
+.GitHub-btn {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.demolink-button:hover,
+.GitHub-btn:hover {
+    background-color: var(--dark-color);
+}
+
+/* Contact Section */
+.contact {
+    padding: 6rem 0;
+}
+
+.contact-content {
+    display: flex;
+    gap: 4rem;
+    margin-top: 3rem;
+    flex-wrap: wrap; /* Allow content to wrap */
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px; /* Ensure contact info doesn't get too narrow */
+}
+
+.contact-methods {
+    margin: 2rem 0;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.contact-method i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.social-links a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--light-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+
+.social-links a:hover {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.contact-form {
+    flex: 1;
+    min-width: 300px; /* Ensure form doesn't get too narrow */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: inherit;
+    transition: var(--transition);
+}
+
+.form-group textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-color);
+    color: var(--white);
+    padding: 2rem 0;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .hero-content,
+    .about-content,
+    .contact-content {
+        flex-direction: column;
+        text-align: center; /* Center text for smaller screens */
+    }
+
+    .hero-image,
+    .about-image {
+        margin-top: 3rem;
+        order: -1; /* Move image above text on smaller screens */
+    }
+
+    .hero-text,
+    .about-text,
+    .hero-image,
+    .about-image,
+    .contact-info,
+    .contact-form {
+        flex: none;
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .hero-buttons {
+        justify-content: center; /* Center buttons */
+    }
+
+    .contact-methods,
+    .social-links {
+        justify-content: center; /* Center contact methods and social links */
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        transition: var(--transition);
+        z-index: 999; /* Ensure nav links are above other content when active */
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Further adjust grid for smaller tablets */
+    }
+
+    .project-image {
+        height: 180px; /* Slightly smaller image height for tablets */
+    }
+}
+
+@media (max-width: 576px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.8rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+    }
+
+    .image-placeholder {
+        width: 250px;
+        height: 250px;
+    }
+
+    .image-placeholder i {
+        font-size: 6rem;
+    }
+
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: 1fr; /* Single column layout for very small screens */
+    }
+
+    .project-image {
+        height: 150px; /* Even smaller image height for mobile */
+    }
+
+    .skill-item,
+    .project-card {
+        padding: 1.5rem; /* Reduce padding for smaller items */
+    }
+
+    .contact-method {
+        flex-direction: column; /* Stack contact methods vertically */
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-method i {
+        margin-bottom: 0.5rem;
+    }
+}
+
+/* Scroll to top button */
+.scroll-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.scroll-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Project Modal Styles (already provided, ensuring responsiveness) */
+.project-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 2% auto;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 900px;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #666;
+}
+
+.close-modal:hover {
+    color: #000;
+}
+
+.modal-body {
+    padding: 1rem 0;
+}
+
+.modal-image {
+    height: 200px;
+    background-color: rgba(78, 107, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    border-radius: 8px;
+}
+
+.modal-image i {
+    font-size: 4rem;
+    color: var(--primary-color);
+}
+
+.modal-links {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.file-upload-section {
+    border-top: 1px solid #eee;
+    padding-top: 2rem;
+    margin-top: 2rem;
+}
+
+.upload-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.upload-section {
+    border: 2px dashed #ddd;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.upload-btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.upload-btn:hover {
+    background-color: var(--dark-color);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.file-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.file-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+.file-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.file-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.3rem;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.download-file {
+    color: var(--success-color);
+}
+
+.download-file:hover {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.delete-file {
+    color: var(--danger-color);
+}
+
+.delete-file:hover {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 5% auto;
+        padding: 1rem;
+    }
+
+    .upload-area {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-links {
+        flex-direction: column;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Portfolio.</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1>Hi, I'm <span>Pravalika Reddy</span></h1>
+                        <h2>Python Developer</h2>
+                        <h2>Full stack Developer</h2>
+                        <p>I build exceptional digital experiences that make people's lives easier.</p>
+                        <div class="hero-buttons">
+                            <a href="#contact" class="btn btn-primary">Hire Me</a>
+                            <a href="#projects" class="btn btn-secondary">View Work</a>
+                            <a href="pravalika_resumee.pdf" download="pravalikareddy_kondam_resume.pdf"
+                                class="btn btn-primary">Download Resume</a>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="image-placeholder">
+                            <img src="sonyphoto.jpg" alt="My Profile Picture" class="profile-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-image">
+    <div class="image-placeholder">
+        <img src="pravalikareddy2.jpg" alt="My Profile Picture" class="profile-img">
+    </div>
+</div>
+
+                    <div class="about-text">
+                        <p>With a strong interest in Python and Full-Stack Development, I focus on building responsive,
+                            user-friendly websites and applications. I enjoy turning ideas into real, working solutions
+                            using technologies like HTML, CSS, JavaScript, Node.js, and Python.</p>
+                        <p>When I'm not coding, you can find me exploring new tech, reading, or learning more about
+                            backend development and full-stack workflows.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">My Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-html5"></i>
+                        <h3>HTML5</h3>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-css3-alt"></i>
+                        <h3>CSS3</h3>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-js"></i>
+                        <h3>JavaScript</h3>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-node-js"></i>
+                        <h3>Node.js</h3>
+                    </div>
+                
+                    <div class="skill-item">
+                        <i class="fas fa-database"></i>
+                        <h3>MongoDB</h3>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-github-alt"></i>
+                        <h3>GitHub</h3>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-server"></i>
+                        <h3>Python</h3>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="product.png" alt="car photo" class="project-image">
+                        </div>
+                        <div class="project-info">
+                            <h3>Emotion-Based Product Recommender System</h3>
+                            <p>A full-stack web application that detects user emotions through facial recognition and recommends personalized products based on their emotional state.</p>
+                            <a href="https://github.com/KondamPravalikaReddy/Emotion-Based-Product-Recommender-System" target="_blank" rel="noopener noreferrer"
+                                class="demolink-button">GitHub</a>
+                            <div class="project-tech">
+                                <span>React.js</span>
+                                <span>Flask</span>
+                                <span>MongoDB</span>
+                                <span>DeepFace</span>
+                                
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="weather.png" alt="car photo" class="project-image">
+                        </div>
+                        <div class="project-info">
+                            <h3>SkyVue</h3>
+                            <p>A beautiful, responsive weather forecasting website built with pure HTML, CSS, and
+                                JavaScript. Featuring modern glassmorphism design, smooth animations, and an intuitive
+                                user interface to deliver real-time weather updates.</p>
+                            <a href="https://github.com/KondamPravalikaReddy/SkyVue"
+                                target="_blank" class="GitHub-btn">GitHub</a>
+                            <div class="project-tech">
+                                <span>HTML5</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-image">
+                            <img src="bid.avif" alt="car photo" class="project-image">
+                        </div>
+                        <div class="project-info">
+                            <h3>Vocal Bid</h3>
+                            <p>Developed an AI-powered voice assistant that enables users to participate in live
+                                auctions through voice commands over phone or web calls. The system supports hands-free
+                                interaction for listing auction items, tracking real-time bids, and placing new bids
+                                using a natural language interface.</p>
+                                <a href="https://github.com/KondamPravalikaReddy/Vocal_Bid"
+                                target="_blank" class="GitHub-btn">GitHub</a>
+                            <div class="project-tech">
+                                
+                                <span>HTML5</span>
+                                <span>CSS</span>
+                                <span>JavaScript</span>
+                            </div>
+                             
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Let's work together</h3>
+                        <p>Feel free to reach out for collaborations or just a friendly hello</p>
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <i class="fas fa-envelope"></i>
+                                <span>kpravalikareddy68@gmail.com</span>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fas fa-phone"></i>
+                                <span>+19 8328576021</span>
+                            </div>
+                            <div class="contact-method">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Hyderabad, India</span>
+                            </div>
+                        </div>
+                        <div class="social-links">
+                            <a href="https://github.com/KondamPravalikaReddy" target="_blank"><i
+                                    class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/k-pravalika-reddy-8b1638279/" target="_blank"
+                                aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                            <a href="mailto:kpravalikareddy68@gmail.com"><i class="fa fa-envelope"></i></a>
+                            <a href="https://www.instagram.com/_.pravalika._.reddy/" target="_blank"><i
+                                    class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <form id="contact-form" action="https://formspree.io/f/xdkzbevo" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Pravalika Reddy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const mobileMenuBtn = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        const sections = document.querySelectorAll('section');
+        const navItems = document.querySelectorAll('.nav-links li a');
+        const contactForm = document.querySelector('.contact-form');
+        const scrollToTopBtn = document.createElement('button');
+
+        // Mobile Menu Toggle
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active')
+                ? '<i class="fas fa-times"></i>'
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a nav link
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        navItems.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Sticky header with scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            header.classList.toggle('navbar-scrolled', window.scrollY > 50);
+
+            // Highlight active section in navigation
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (window.scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll to top button
+        scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+        scrollToTopBtn.classList.add('scroll-to-top');
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        document.body.appendChild(scrollToTopBtn);
+
+        window.addEventListener('scroll', () => {
+            scrollToTopBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+        });
+
+        // Form submission handler
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                // Get form values
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+
+                // Here you would typically send the data to a server
+                console.log('Form submitted:', data);
+
+                // Show success message
+                alert('Thank you for your message! I will get back to you soon.');
+
+                // Reset form
+                contactForm.reset();
+            });
+        }
+
+        // Animate elements when scrolling
+
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.skill-item, .project-card, .stat-item');
+
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        // Set initial styles for animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.skill-item, .project-card, .stat-item');
+
+            animatedElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+
+            // Trigger initial check
+            animateOnScroll();
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Typewriter effect for hero text (optional)
+        const typeWriter = (element, text, i = 0) => {
+            if (i < text.length) {
+                element.innerHTML += text.charAt(i);
+                i++;
+                setTimeout(() => typeWriter(element, text, i), 100);
+            }
+        };
+
+        // Uncomment to enable typewriter effect
+        // const heroTitle = document.querySelector('.hero-text h1');
+        // if (heroTitle) {
+        //     const originalText = heroTitle.textContent;
+        //     heroTitle.textContent = '';
+        //     typeWriter(heroTitle, originalText);
+        // }
+
+        // Project modal functionality
+        const projectCards = document.querySelectorAll('.project-card');
+        const modal = document.createElement('div');
+        modal.classList.add('project-modal');
+        modal.innerHTML = `
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-body">
+            <h2 class="modal-title"></h2>
+            <p class="modal-description"></p>
+            <div class="modal-tech"></div>
+            <div class="modal-image">
+                <i class="fas fa-project-diagram"></i>
+            </div>
+            <div class="modal-links">
+                <a href="#" class="btn btn-primary" id="live-demo-btn">Live Demo</a>
+                <a href="#" class="btn btn-secondary" id="view-code-btn">View Code</a>
+            </div>
+            <div class="file-upload-section">
+                <h3>Upload Project Files</h3>
+                <div class="upload-area">
+                    <div class="upload-section">
+                        <h4>Code Files</h4>
+                        <input type="file" id="code-upload" multiple accept=".js,.html,.css,.py,.java,.cpp,.c,.php,.rb,.go,.ts,.json,.xml,.md">
+                        <label for="code-upload" class="upload-btn">
+                            <i class="fas fa-code"></i> Upload Code
+                        </label>
+                        <ul class="code-files file-list"></ul>
+                    </div>
+                    <div class="upload-section">
+                        <h4>Demo Files</h4>
+                        <input type="file" id="demo-upload" multiple accept=".html,.zip,.pdf,.mp4,.mov,.avi,.gif,.jpg,.png">
+                        <label for="demo-upload" class="upload-btn">
+                            <i class="fas fa-play"></i> Upload Demo
+                        </label>
+                        <ul class="demo-files file-list"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+`;
+        document.body.appendChild(modal);
+
+        // Project Modal with File Management
+        document.addEventListener('DOMContentLoaded', function () {
+            const modalElement = document.querySelector('.project-modal');
+            const closeBtn = document.querySelector('.close-modal');
+            const projectCards = document.querySelectorAll('.project-card');
+            const codeUpload = document.getElementById('code-upload');
+            const demoUpload = document.getElementById('demo-upload');
+            const codeFilesList = document.querySelector('.code-files');
+            const demoFilesList = document.querySelector('.demo-files');
+            const liveDemoBtn = document.getElementById('live-demo-btn');
+            const viewCodeBtn = document.getElementById('view-code-btn');
+
+            // Store project files data
+            const projectsData = {};
+            let currentProjectIndex = 0;
+
+            // Initialize project data
+            projectCards.forEach((card, index) => {
+                projectsData[index] = {
+                    codeFiles: [],
+                    demoFiles: []
+                };
+
+                // Set Live Demo URL based on project title
+                let demoURL = "#";
+                switch (title.trim()) {
+                    case "DriveEasy":
+                        demoURL = "https://drive-easy-hazel.vercel.app/";
+                        break;
+                    case "SkyVue":
+                        demoURL = "https://skyvue-weather.vercel.app/";
+                        break;
+                    case "Vocal Bid":
+                        demoURL = "https://voice-auction-demo.vercel.app/";
+                        break;
+                }
+
+                liveDemoBtn.href = demoURL;
+                liveDemoBtn.target = "_blank";
+                liveDemoBtn.rel = "noopener noreferrer";
+                liveDemoBtn.style.display = 'inline-block';
+
+            });
+
+            // Close modal
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function () {
+                    modalElement.style.display = 'none';
+                });
+            }
+
+            window.addEventListener('click', function (e) {
+                if (e.target === modalElement) {
+                    modalElement.style.display = 'none';
+                }
+            });
+
+            // Handle file uploads
+            if (codeUpload) {
+                codeUpload.addEventListener('change', function (e) {
+                    handleFileUpload(e, 'codeFiles');
+                });
+            }
+
+            if (demoUpload) {
+                demoUpload.addEventListener('change', function (e) {
+                    handleFileUpload(e, 'demoFiles');
+                });
+            }
+
+            function handleFileUpload(event, fileType) {
+                const files = event.target.files;
+                const projectIndex = currentProjectIndex;
+
+                for (let i = 0; i < files.length; i++) {
+                    const file = files[i];
+                    projectsData[projectIndex][fileType].push({
+                        name: file.name,
+                        size: formatFileSize(file.size),
+                        type: file.type,
+                        file: file
+                    });
+                }
+
+                updateFileLists(projectIndex);
+                event.target.value = ''; // Reset input
+            }
+
+            function updateFileLists(projectIndex) {
+                // Clear existing lists
+                if (codeFilesList) codeFilesList.innerHTML = '';
+                if (demoFilesList) demoFilesList.innerHTML = '';
+
+                // Populate code files
+                projectsData[projectIndex].codeFiles.forEach((file, i) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                <span>${file.name} (${file.size})</span>
+                <div class="file-actions">
+                    <button class="download-file" data-type="codeFiles" data-index="${i}">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button class="delete-file" data-type="codeFiles" data-index="${i}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+                    if (codeFilesList) codeFilesList.appendChild(li);
+                });
+
+                // Populate demo files
+                projectsData[projectIndex].demoFiles.forEach((file, i) => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                <span>${file.name} (${file.size})</span>
+                <div class="file-actions">
+                    <button class="download-file" data-type="demoFiles" data-index="${i}">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button class="delete-file" data-type="demoFiles" data-index="${i}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `;
+                    if (demoFilesList) demoFilesList.appendChild(li);
+                });
+
+                // Add event listeners for download and delete
+                document.querySelectorAll('.download-file').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        const type = this.getAttribute('data-type');
+                        const index = parseInt(this.getAttribute('data-index'));
+                        downloadFile(projectIndex, type, index);
+                    });
+                });
+
+                document.querySelectorAll('.delete-file').forEach(btn => {
+                    btn.addEventListener('click', function () {
+                        const type = this.getAttribute('data-type');
+                        const index = parseInt(this.getAttribute('data-index'));
+                        deleteFile(projectIndex, type, index);
+                    });
+                });
+
+                // Update demo and code buttons
+                updateActionButtons(projectIndex);
+            }
+
+            function downloadFile(projectIndex, fileType, fileIndex) {
+                const file = projectsData[projectIndex][fileType][fileIndex].file;
+                const url = URL.createObjectURL(file);
+
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = file.name;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+
+            function deleteFile(projectIndex, fileType, fileIndex) {
+                projectsData[projectIndex][fileType].splice(fileIndex, 1);
+                updateFileLists(projectIndex);
+            }
+
+            function updateActionButtons(projectIndex) {
+                const hasCodeFiles = projectsData[projectIndex].codeFiles.length > 0;
+                const hasDemoFiles = projectsData[projectIndex].demoFiles.length > 0;
+
+                if (viewCodeBtn) {
+                    viewCodeBtn.style.display = hasCodeFiles ? 'inline-block' : 'none';
+
+                    if (hasCodeFiles) {
+                        viewCodeBtn.onclick = function (e) {
+                            e.preventDefault();
+                            showCodePreview(projectIndex);
+                        };
+                    }
+                }
+
+                if (liveDemoBtn) {
+                    liveDemoBtn.style.display = hasDemoFiles ? 'inline-block' : 'none';
+
+                    if (hasDemoFiles) {
+                        liveDemoBtn.onclick = function (e) {
+                            e.preventDefault();
+                            showDemoPreview(projectIndex);
+                        };
+                    }
+                }
+            }
+
+            function showCodePreview(projectIndex) {
+                const codeFiles = projectsData[projectIndex].codeFiles;
+                if (codeFiles.length > 0) {
+                    // Create a simple code preview
+                    let previewContent = 'Code Files:\n\n';
+                    codeFiles.forEach(file => {
+                        previewContent += `${file.name} (${file.size})\n`;
+                    });
+                    alert(previewContent + '\nIn a real implementation, this would show the actual code files.');
+                }
+            }
+
+            function showDemoPreview(projectIndex) {
+                const demoFiles = projectsData[projectIndex].demoFiles;
+                if (demoFiles.length > 0) {
+                    // For HTML files, try to open them
+                    const htmlFile = demoFiles.find(file => file.name.toLowerCase().endsWith('.html'));
+                    if (htmlFile) {
+                        const url = URL.createObjectURL(htmlFile.file);
+                        window.open(url, '_blank');
+                        setTimeout(() => URL.revokeObjectURL(url), 1000);
+                    } else {
+                        alert('Demo files uploaded! In a real implementation, this would display the demo.');
+                    }
+                }
+            }
+
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+        });
+
+        // Add modal styles dynamically
+        const modalStyles = document.createElement('style');
+        modalStyles.textContent = `
+    .project-modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        overflow: auto;
+    }
+    
+    .modal-content {
+        background-color: #fff;
+        margin: 2% auto;
+        padding: 2rem;
+        border-radius: 8px;
+        width: 90%;
+        max-width: 900px;
+        position: relative;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .close-modal {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 2rem;
+        cursor: pointer;
+        color: #666;
+    }
+    
+    .close-modal:hover {
+        color: #000;
+    }
+    
+    .modal-body {
+        padding: 1rem 0;
+    }
+    
+    .modal-image {
+        height: 200px;
+        background-color: rgba(78, 107, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 2rem 0;
+        border-radius: 8px;
+    }
+    
+    .modal-image i {
+        font-size: 4rem;
+        color: var(--primary-color);
+    }
+    
+    .modal-links {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .file-upload-section {
+        border-top: 1px solid #eee;
+        padding-top: 2rem;
+        margin-top: 2rem;
+    }
+    
+    .upload-area {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 1rem;
+    }
+    
+    .upload-section {
+        border: 2px dashed #ddd;
+        padding: 1.5rem;
+        border-radius: 8px;
+        text-align: center;
+    }
+    
+    .upload-btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+    }
+    
+    .upload-btn:hover {
+        background-color: var(--dark-color);
+    }
+    
+    .upload-btn i {
+        margin-right: 0.5rem;
+    }
+    
+    input[type="file"] {
+        display: none;
+    }
+    
+    .file-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 1rem;
+        text-align: left;
+    }
+    
+    .file-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+        border-bottom: 1px solid #eee;
+        font-size: 0.9rem;
+    }
+    
+    .file-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+    
+    .file-actions button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0.3rem;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+    
+    .download-file {
+        color: var(--success-color);
+    }
+    
+    .download-file:hover {
+        background-color: var(--success-color);
+        color: white;
+    }
+    
+    .delete-file {
+        color: var(--danger-color);
+    }
+    
+    .delete-file:hover {
+        background-color: var(--danger-color);
+        color: white;
+    }
+    
+    @media (max-width: 768px) {
+        .modal-content {
+            width: 95%;
+            margin: 5% auto;
+            padding: 1rem;
+        }
+        
+        .upload-area {
+            grid-template-columns: 1fr;
+        }
+        
+        .modal-links {
+            flex-direction: column;
+        }
+    }
+`;
+        document.head.appendChild(modalStyles);
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Any additional initialization code can go here
+            console.log('Portfolio website loaded successfully!');
+        });
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(form);
+
+        fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+                Accept: "application/json"
+            }
+        }).then(response => {
+            if (response.ok) {
+                alert("Thank you! Your message has been sent.");
+                form.reset();
+            } else {
+                alert("Oops! Something went wrong. Please try again.");
+            }
+        }).catch(error => {
+            alert("There was a problem submitting your form.");
+        });
+    });
+});
+
+
+    </script>
+</body>
+
+</html>
